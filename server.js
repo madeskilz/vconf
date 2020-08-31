@@ -7,8 +7,7 @@ let server;
 let port = process.env.PORT || 3000;
 
 const https = require("https");
-server = https.createServer(credentials, app);
-
+server = https.createServer(app);
 
 const io = require("socket.io")(server);
 app.use(express.static(__dirname + "/public"));
@@ -34,16 +33,4 @@ io.sockets.on("connection", function (socket) {
     broadcaster && socket.to(broadcaster).emit("bye", socket.id);
   });
 });
-reload(app)
-  .then(function (reloadReturned) {
-    // reloadReturned is documented in the returns API in the README
-
-    // Reload started, start web server
-    server.listen(port, () => console.log(`Server is running on port ${port}`));
-  })
-  .catch(function (err) {
-    console.error(
-      "Reload could not start, could not start server/sample app",
-      err
-    );
-  });
+server.listen(port, () => console.log(`Server is running on port ${port}`));
