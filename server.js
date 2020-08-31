@@ -12,7 +12,7 @@ if (credentials.key && credentials.cert) {
 } else {
   const http = require("http");
   server = http.createServer(app);
-  port = 3000;
+  port = 80;
 }
 const io = require("socket.io")(server);
 app.use(express.static(__dirname + "/public"));
