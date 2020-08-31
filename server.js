@@ -8,7 +8,6 @@ let port = process.env.PORT || 3000;
 
 const https = require("https");
 server = https.createServer(credentials, app);
-port = 443;
 
 
 const io = require("socket.io")(server);
