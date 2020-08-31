@@ -4,16 +4,13 @@ const app = express();
 const reload = require("reload");
 let broadcaster;
 let server;
-let port;
-if (credentials.key && credentials.cert) {
-  const https = require("https");
-  server = https.createServer(credentials, app);
-  port = 443;
-} else {
-  const http = require("http");
-  server = http.createServer(app);
-  port = 80;
-}
+let port = process.env.PORT || 3000;
+
+const https = require("https");
+server = https.createServer(credentials, app);
+port = 443;
+
+
 const io = require("socket.io")(server);
 app.use(express.static(__dirname + "/public"));
 io.sockets.on("error", (e) => console.log(e));
