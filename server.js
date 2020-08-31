@@ -17,6 +17,9 @@ io.sockets.on("connection", function (socket) {
     broadcaster = socket.id;
     socket.broadcast.emit("broadcaster");
   });
+  socket.on("connect", () => {
+    console.log("connect");
+  });
   socket.on("watcher", function () {
     broadcaster && socket.to(broadcaster).emit("watcher", socket.id);
   });
