@@ -6,8 +6,8 @@ let broadcaster;
 let server;
 let port = process.env.PORT || 3000;
 
-const https = require("https");
-server = https.createServer(app);
+const http = require("http");
+server = http.createServer(app);
 
 const io = require("socket.io")(server);
 app.use(express.static(__dirname + "/public"));
