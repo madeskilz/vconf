@@ -1,7 +1,6 @@
 const credentials = require("./credentials");
 const express = require("express");
 const app = express();
-const reload = require("reload");
 let broadcaster;
 let server;
 let port = process.env.PORT || 3000;
